@@ -546,7 +546,7 @@ RSpec.describe Gitlab::Client do
       expect(@deploy_keys).to be_a Gitlab::PaginatedResponse
       expect(@deploy_keys.first.id).to eq 2
       expect(@deploy_keys.first.title).to eq 'Key Title'
-      expect(@deploy_keys.first.key).to match(/ssh-rsa/)
+      expect(@deploy_keys.first.key).to include('ssh-rsa')
     end
   end
 
@@ -563,7 +563,7 @@ RSpec.describe Gitlab::Client do
     it 'returns project deploy key' do
       expect(@deploy_key.id).to eq 2
       expect(@deploy_key.title).to eq 'Key Title'
-      expect(@deploy_key.key).to match(/ssh-rsa/)
+      expect(@deploy_key.key).to include('ssh-rsa')
     end
   end
 

@@ -37,13 +37,13 @@ RSpec.describe Gitlab::Error::ResponseError do
   it 'builds an error message from text' do
     headers = { 'content-type' => 'text/plain' }
     response_double = double('response', body: 'Retry later', to_s: 'Retry text', parsed_response: { message: 'Retry hash' }, code: 429, options: {}, headers: headers, request: @request_double)
-    expect(described_class.new(response_double).send(:build_error_message)).to match(/Retry text/)
+    expect(described_class.new(response_double).send(:build_error_message)).to include('Retry text')
   end
 
   it 'builds an error message from parsed json' do
     headers = { 'content-type' => 'application/json' }
     response_double = double('response', body: 'Retry later', to_s: 'Retry text', parsed_response: { message: 'Retry hash' }, code: 429, options: {}, headers: headers, request: @request_double)
-    expect(described_class.new(response_double).send(:build_error_message)).to match(/Retry hash/)
+    expect(described_class.new(response_double).send(:build_error_message)).to include('Retry hash')
   end
 
   describe 'parsing errors' do
@@ -59,7 +59,7 @@ RSpec.describe Gitlab::Error::ResponseError do
     end
 
     it 'builds an error message from text' do
-      expect(described_class.new(response_double).send(:build_error_message)).to match(/Retry text/)
+      expect(described_class.new(response_double).send(:build_error_message)).to include('Retry text')
     end
   end
 

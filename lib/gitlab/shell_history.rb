@@ -30,6 +30,8 @@ class Gitlab::Shell
     private
 
     def history_file
+      # The memoized handle stays open for the life of the shell session.
+      # rubocop:disable-next Style/FileOpen
       @history_file ||= File.open(history_file_path, 'w', 0o600).tap do |file|
         file.sync = true
       end
