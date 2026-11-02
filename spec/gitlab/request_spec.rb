@@ -30,7 +30,7 @@ RSpec.describe Gitlab::Request do
 
   describe '.parse' do
     it 'returns ObjectifiedHash' do
-      body = JSON.unparse(a: 1, b: 2)
+      body = JSON.generate(a: 1, b: 2)
       expect(described_class.parse(body)).to be_an Gitlab::ObjectifiedHash
       expect(described_class.parse('true')).to be true
       expect(described_class.parse('false')).to be false

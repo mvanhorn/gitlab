@@ -8,7 +8,6 @@
       "api"
     ],
     "user_id": 2,
-    "last_used_at": null,
     "last_used_at": "2024-09-13T04:10:23.075Z",
     "active": true,
     "expires_at": "2024-09-20",
@@ -24,7 +23,6 @@
       "read_repository"
     ],
     "user_id": 2,
-    "last_used_at": null,
     "last_used_at": "2024-09-13T06:15:23.075Z",
     "active": true,
     "expires_at": "2024-09-25",
